@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pancake Delivery</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pancake Delivery</h1>
+
+    <form id="orderForm">
+        <fieldset>
+            <legend>Select your toppings:</legend>
+            <label><input type="checkbox" name="topping" value="Nutella"> Nutella</label>
+            <label><input type="checkbox" name="topping" value="Bueno"> Bueno</label>
+            <label><input type="checkbox" name="topping" value="LotusCreme"> Lotus Creme</label>
+            <label><input type="checkbox" name="topping" value="MapleSyrup"> Maple Syrup</label>
+            <label><input type="checkbox" name="topping" value="Strawberries"> Strawberries</label>
+        </fieldset>
+
+        <label for="quantity">Number of Pancakes:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+
+        <label for="contactNumber">Contact Number:</label>
+        <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="button" onclick="confirmOrder()">Confirm Order</button>
+    </form>
+
+    <script>
+        function confirmOrder() {
+            // Fetch form data
+            const form = document.getElementById('orderForm');
+            const formData = new FormData(form);
+            
+            // Prepare data for email
+            let emailContent = 'New Pancake Order:\n\n';
+            formData.forEach((value, key) => {
+                emailContent += `${key}: ${value}\n`;
+            });
+
+            // Display alert with order details (for now, in a real project, this would be sent to the backend)
+            alert(emailContent);
+
+            // You can add code here to send the email using a backend server
+        }
+    </script>
+</body>
+</html>
