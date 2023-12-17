@@ -15,7 +15,7 @@
 
     <h1>Pancake Delivery</h1>
 
-    <form id="orderForm">
+    <form id="orderForm" action="https://formspree.io/lennydmansour@gmail.com" method="POST">
         <fieldset>
             <legend>Select your toppings:</legend>
             <label><input type="checkbox" name="topping" value="Nutella"> Nutella</label>
@@ -40,26 +40,9 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
 
-        <button type="button" onclick="confirmOrder()">Confirm Order</button>
+        <button type="submit">Confirm Order</button>
     </form>
 
-    <script>
-        function confirmOrder() {
-            // Fetch form data
-            const form = document.getElementById('orderForm');
-            const formData = new FormData(form);
-            
-            // Prepare data for email
-            let emailContent = 'New Pancake Order:\n\n';
-            formData.forEach((value, key) => {
-                emailContent += `${key}: ${value}\n`;
-            });
-
-            // Display alert with order details (for now, in a real project, this would be sent to the backend)
-            alert(emailContent);
-
-            // You can add code here to send the email using a backend server
-        }
-    </script>
 </body>
 </html>
+
