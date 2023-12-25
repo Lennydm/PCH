@@ -26,7 +26,8 @@
             text-align: center;
             margin-top: 20px;
             color: #555;
-            font-family: Arial, sans-serif; font-weight: bold;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
         }
         #orderForm {
             max-width: 400px;
@@ -71,7 +72,7 @@
             <label><input type="checkbox" name="topping" value="Strawberries"> Strawberries</label>
             <label><input type="checkbox" name="topping" value="Vanilla Ice"> Vanilla Ice</label>
             <label><input type="checkbox" name="topping" value="Banana"> Banana</label>
-            <label><input type="checkbox" name="topping" value="Powdered Suger">Powdered Suger</label>
+            <label><input type="checkbox" name="topping" value="Powdered Sugar"> Powdered Sugar</label>
         </fieldset>
 
         <label for="quantity">Number of Pancakes:</label>
@@ -89,7 +90,18 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
 
-        <button type="submit">Confirm Order</button>
+        <!-- Hidden field for the unique order number -->
+        <input type="hidden" id="orderNumber" name="orderNumber" value="">
+
+        <button type="submit" onclick="generateOrderNumber()">Confirm Order</button>
+
+        <!-- JavaScript to generate a unique order number -->
+        <script>
+            function generateOrderNumber() {
+                var orderNumber = 'ODR' + Date.now(); // You can customize the format if needed
+                document.getElementById('orderNumber').value = orderNumber;
+            }
+        </script>
     </form>
 
 </body>
