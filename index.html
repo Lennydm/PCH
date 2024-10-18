@@ -1,107 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pancake Delivery</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: url('background.png') no-repeat center center fixed;
-            background-size: cover;
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-        #openingHours {
-            text-align: center;
-            margin-top: 20px;
-            color: #555;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-        }
-        #orderForm {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        button {
-            background-color: #FF9900;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Add your logo here -->
-    <img src="logo.png" alt="Pancake Delivery Logo">
-    <img src="openinghours.png" alt="Pancake Delivery Logo">
-
-    <!-- Opening Hours Section -->
-    <div id="openingHours">
-        <p>Sundays: 9:00 AM - 11:00 AM</p>
-        <p>Monday - Saturday: closed</p>
+    <!-- Logo -->
+    <img src="logo.png" alt="Pancake Delivery Logo" class="center">
+    
+    <!-- Öffnungszeiten -->
+    <div id="openingHours" class="center">
+        <p><strong>Sonn- und Feiertage:</strong> 9:00 Uhr - 11:00 Uhr</p>
+        <p><strong>Montag bis Samstag:</strong> geschlossen</p>
     </div>
 
-    <form id="orderForm" action="submit_form.php" method="POST">
+    <!-- Bestellformular -->
+    <form id="orderForm" action="https://formspree.io/f/xzbnpdvp" method="POST">
         <fieldset>
-            <legend>Select your toppings:</legend>
+            <legend>Wähle deine Toppings:</legend>
             <label><input type="checkbox" name="topping" value="Nutella"> Nutella</label>
             <label><input type="checkbox" name="topping" value="Bueno"> Bueno</label>
             <label><input type="checkbox" name="topping" value="LotusCreme"> Lotus Creme</label>
-            <label><input type="checkbox" name="topping" value="MapleSyrup"> Maple Syrup</label>
-            <label><input type="checkbox" name="topping" value="Strawberries"> Strawberries</label>
-            <label><input type="checkbox" name="topping" value="Vanilla Ice"> Vanilla Ice</label>
-            <label><input type="checkbox" name="topping" value="Banana"> Banana</label>
-            <label><input type="checkbox" name="topping" value="Powdered Sugar"> Powdered Sugar</label>
+            <label><input type="checkbox" name="topping" value="MapleSyrup"> Ahornsirup</label>
+            <label><input type="checkbox" name="topping" value="Strawberries"> Erdbeeren</label>
+            <label><input type="checkbox" name="topping" value="Vanilla Ice"> Vanilleeis</label>
+            <label><input type="checkbox" name="topping" value="Banana"> Banane</label>
+            <label><input type="checkbox" name="topping" value="Powdered Sugar"> Puderzucker</label>
         </fieldset>
 
-        <label for="quantity">Number of Pancakes:</label>
+        <label for="quantity">Anzahl der Pancakes:</label>
         <input type="number" id="quantity" name="quantity" min="1" max="10" required>
 
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
 
-        <label for="address">Address:</label>
+        <label for="address">Adresse:</label>
         <textarea id="address" name="address" rows="4" required></textarea>
 
-        <label for="contactNumber">Contact Number:</label>
-        <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{}" required>
+        <label for="contactNumber">Telefonnummer:</label>
+        <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" required>
         
-        <label for="email">Email:</label>
+        <label for="email">E-Mail:</label>
         <input type="email" id="email" name="email" required>
 
-        <!-- Hidden field for the unique order number -->
-        <input type="hidden" id="orderNumber" name="orderNumber" value="">
-
-        <button type="submit" onclick="generateOrderNumber()">Confirm Order</button>
-
-        <!-- JavaScript to generate a unique order number -->
-        <script>
-            function generateOrderNumber() {
-                var orderNumber = 'ODR' + Date.now(); // You can customize the format if needed
-                document.getElementById('orderNumber').value = orderNumber;
-            }
-        </script>
+        <button type="submit">Bestellung bestätigen</button>
     </form>
 
 </body>
